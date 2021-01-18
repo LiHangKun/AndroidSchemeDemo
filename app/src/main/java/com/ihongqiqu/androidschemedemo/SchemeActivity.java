@@ -5,8 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-//h5打开的链接
-//tuiyouqianapp://tuiyouqianapp.com/open/scheme?name=google09&page=1
+//h5打开的链接这个不需要看这个是我自己app定义的(不需要看)
+//tuiyouqianapp://tuiyouqianapp.com/open/scheme?name=google09&page=1(不需要看)
 public class SchemeActivity extends AppCompatActivity {
 
     TextView tv_data;

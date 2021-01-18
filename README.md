@@ -16,8 +16,8 @@
 
  * scheme：唤起协议	※详细后述
  * host：  唤起指定host
- * path：  协议路径	※没有也可以
- * query： 一些参数	※没有也可以
+ * path：  协议路径
+ * query： 一些参数
 
 #### 终端未安装APP
   
@@ -26,50 +26,35 @@
 #### JavaScript实现源码
 
 ```javascript
-<a id="call-app" href="javascript:;" > Start or Download </a><br/><br/>
-<input id="download-app" type="hidden" name="storeurl" value="http://jd.com/8JZ5OO">
-	
-<script>
-    (function(){
-        var ua = navigator.userAgent.toLowerCase();
-        var t;
-        var config = {
-            /*scheme:必须*/
-            scheme_IOS: 'schemedemo://',
-            scheme_Adr: 'schemedemo://ihongqiqu.com/test/scheme?name=google&page=1',
-            download_url: document.getElementById('download-app').value,
-            timeout: 600
-        };
- 
-        function openclient() {
-            var startTime = Date.now();
- 
-            var ifr = document.createElement('iframe');
+<html>
+<head>
+    <meta http-equiv="Content-Type" charset="GB2312"/>
 
-            ifr.src = ua.indexOf('os') > 0 ? config.scheme_IOS : config.scheme_Adr;
-            ifr.style.display = 'none';
-            document.body.appendChild(ifr);
- 
-            var t = setTimeout(function() {
-                var endTime = Date.now();
- 
-                if (!startTime || endTime - startTime < config.timeout + 200) { 
-                    window.location = config.download_url;
-                } else {
-                             
-                }
-            }, config.timeout);
+    <script type="text/javascript">
+            function javacalljs(){
+                 document.getElementById("showmsg").innerHTML = "JAVA调用了JS的无参函数";
 
-            window.onblur = function() {
-                clearTimeout(t);
             }
-        }
-        window.addEventListener("DOMContentLoaded", function(){
-            document.getElementById("call-app").addEventListener('click', 
-            	openclient, false);
-        }, false);
-    })()
-</script>
+
+            function javacalljswith(arg){
+                 document.getElementById("showmsg").innerHTML = (arg);
+
+            }
+
+        </script>
+
+</head>
+
+<body>
+<h3>Web模块</h3>
+
+<h3 id="showmsg">调用js显示结果</h3>
+
+<input type="button" value="Js调用Java代码" onclick="window.android.jsCallAndroid()"/>
+<a href="tuiyouqianapp://tuiyouqianapp.com/open/scheme?name=google09&page=1" onclick="true">点击</a>
+<input type="button" value="Js调用Java代码并传参数" onclick="window.android.jsCallAndroidArgs('Js传过来的参数')"/>
+</body>
+</html>
 ```
 
 ### APP实现
@@ -111,33 +96,8 @@ sb.append("page : ").append(uri.getQueryParameter("page"));
 tv_data.setText(sb.toString());
 ```
 
-### 测试资源
-
-[唤起源码](https://raw.githubusercontent.com/jingle1267/AndroidSchemeDemo/master/html/callback.html) <br/>
-[测试地址](https://rawgit.com/jingle1267/AndroidSchemeDemo/master/html/callback.html) <br/>
-[正式地址](https://cdn.rawgit.com/jingle1267/AndroidSchemeDemo/master/html/callback.html) <br/>
-
-### 其它
-
-[Android Webview模块](https://github.com/jingle1267/WebActivity)
 
 ### 开发者
 
-* [Zhenguo Jin](http://ihongqiqu.com) - <jingle1267@163.com>
+* 李杭坤 微信号- lhk521666
 
-
-### License
-
-    Copyright 2015 Zhenguo Jin
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.

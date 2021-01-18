@@ -15,7 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <!--下面三个参数必须写-->
+        <!--下面三个参数必须写
+        // h5打开的  schemedemo://ihongqiqu.com/test/scheme?name=google09&page=1
+        -->
         <activity android:name=".SchemeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
